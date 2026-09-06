@@ -17,35 +17,9 @@ The data warehouse follows a Medallion Architecture:
 
 The final Gold layer is optimized for analytical queries and reporting.
 
-##🏗️ Architecture
-                        SOURCE SYSTEMS
-                              │
-                              ▼
-                    ┌──────────────────┐
-                    │   BRONZE LAYER   │
-                    │    Raw Data      │
-                    └────────┬─────────┘
-                             │
-                             │ ETL
-                             ▼
-                    ┌──────────────────┐
-                    │   SILVER LAYER   │
-                    │ Cleaned &        │
-                    │ Transformed Data │
-                    └────────┬─────────┘
-                             │
-                             │ Transformation
-                             ▼
-                    ┌──────────────────┐
-                    │    GOLD LAYER    │
-                    │  Dimensional DW  │
-                    └────────┬─────────┘
-                             │
-                             ▼
-                       ANALYTICS / BI
-                             │
-                             ▼
-                         Power BI
+##🏗️ Architecture ##
+                       
+<img width="1536" height="1024" alt="ChatGPT Image Sep 6, 2026, 05_37_50 PM" src="https://github.com/user-attachments/assets/885cf6ff-82cc-4a09-a5f4-6009f2dbf3be" />
 
                          
 ##🔧 Technologies Used***
