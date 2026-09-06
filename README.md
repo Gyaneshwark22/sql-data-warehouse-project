@@ -1,5 +1,5 @@
 # sql-data-warehouse-project
-Modern Data Warehouse with SQL Server
+**Modern Data Warehouse with SQL Server**
 
 A modern data warehouse project built with SQL Server, covering the complete data engineering lifecycle — from raw data ingestion and ETL to dimensional data modeling and analytical reporting.
 
