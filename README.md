@@ -5,7 +5,7 @@ A modern data warehouse project built with SQL Server, covering the complete dat
 
 The project demonstrates how to build a scalable data warehouse using SQL Server, T-SQL, ETL pipelines, and dimensional modeling following industry-standard practices.
 
-##📌 Project Overview
+**📌 Project Overview**
 
 The goal of this project is to design and implement a modern data warehouse that integrates data from multiple source systems, transforms and cleans the data through an ETL process, and prepares it for analytics and reporting.
 
@@ -17,12 +17,12 @@ The data warehouse follows a Medallion Architecture:
 
 The final Gold layer is optimized for analytical queries and reporting.
 
-##🏗️ Architecture ##
+**🏗️ Architecture **
                        
 <img width="1536" height="1024" alt="ChatGPT Image Sep 6, 2026, 05_37_50 PM" src="https://github.com/user-attachments/assets/885cf6ff-82cc-4a09-a5f4-6009f2dbf3be" />
 
                          
-##🔧 Technologies Used***
+**🔧 Technologies Used**
 Technology	Purpose
 SQL Server	Data warehouse and database engine
 T-SQL	Data transformation, stored procedures and SQL development
@@ -32,7 +32,7 @@ Power BI	Data visualization and analytics
 Draw.io	Data architecture and modeling diagrams
 
 
-🔄 ETL Process
+**🔄 ETL Process**
 
 The ETL pipeline consists of three major stages:
 
@@ -57,11 +57,12 @@ Convert data types
 Validate business rules
 Clean inconsistent values
 Transform source data
+
 3. Load
 
 The transformed data is loaded into the Gold Layer, which contains business-ready fact and dimension tables for analytics.
 
-🥉 Bronze Layer
+**🥉 Bronze Layer**
 
 The Bronze Layer stores data in its raw form with minimal transformation.
 
@@ -76,7 +77,8 @@ Preserve raw source data
 Maintain data lineage
 Support data reprocessing
 Provide a reliable source for transformations
-🥈 Silver Layer
+
+**🥈 Silver Layer**
 
 The Silver Layer contains cleaned and standardized data.
 
@@ -104,3 +106,81 @@ WITH duplicate_records AS
 SELECT *
 FROM duplicate_records
 WHERE rn = 1;
+# 🥇 Gold Layer
+
+The Gold Layer contains the final business-ready dimensional model.
+
+The warehouse follows a Star Schema.
+
+**Dimension Tables**
+
+dim_customer
+dim_product
+dim_date
+dim_location
+
+**Fact Tables**
+
+fact_sales
+fact_orders
+
+Star Schema
+                    dim_customer
+                         │
+                         │
+                         ▼
+dim_date ─────────► fact_sales ◄───────── dim_product
+                         │
+                         │
+                         ▼
+                    dim_location
+📊 Data Modeling
+
+The project uses dimensional modeling to simplify analytical queries and improve reporting performance.
+
+Fact Table
+
+The fact_sales table stores measurable business events.
+
+fact_sales
+-------------------------
+sales_key
+customer_key
+product_key
+date_key
+quantity
+unit_price
+sales_amount
+Customer Dimension
+dim_customer
+-------------------------
+customer_key
+customer_id
+customer_name
+city
+state
+country
+customer_segment
+
+Surrogate keys are used to establish relationships between fact and dimension tables.
+
+🔍 Data Quality
+
+The ETL process includes several data quality checks:
+
+Duplicate record detection
+NULL value validation
+Invalid date detection
+Referential integrity checks
+Data type validation
+Missing dimension records
+Source-to-target reconciliation
+
+Example:
+
+SELECT 
+    customer_id,
+    COUNT(*) AS record_count
+FROM silver_customers
+GROUP BY customer_id
+HAVING COUNT(*) > 1;
